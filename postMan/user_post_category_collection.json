@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "3ce9b946-4709-4f0b-adf3-04c2a5db5e8a",
 		"name": "user_post_category",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26193776"
 	},
 	"item": [
@@ -13,15 +13,48 @@
 					"name": "GetAllUsers",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Create User",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"user test 2\",\r\n  \"email\": \"usertest2@example.com\",\r\n  \"setting\": {\r\n    \"phoneNo\": \"03001234567\",\r\n    \"city\": \"Lahore\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
 					},
 					"response": []
 				},
@@ -29,23 +62,71 @@
 					"name": "GetOneUser",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"7"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Update User",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\":\"testupdate\",\r\n\"email\":\"testuser@gmail.com\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"4"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Delete User",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"4"
+							]
+						}
 					},
 					"response": []
 				}
@@ -57,42 +138,419 @@
 				{
 					"name": "Create Post",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Post with service\",\r\n  \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\r\n  \"userId\":3,\r\n  \"categoryIds\": [2, 4]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "createpost",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Post with service\",\r\n  \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\r\n  \"userId\":3,\r\n  \"categoryIds\": [2, 4]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"112-qTeWJcYJmOuioRzAiPHjKar4nwA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 12:02:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Post created successfully\",\n    \"data\": {\n        \"id\": 9,\n        \"title\": \"Post with service\",\n        \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n        \"userId\": 3,\n        \"updatedAt\": \"2025-07-10T12:02:38.006Z\",\n        \"createdAt\": \"2025-07-10T12:02:38.006Z\"\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Get All Posts",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getallposts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "5111"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13f7-4k3Ap1YepaYFZIlXymqWy/HoGvg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:28:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Posts fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"abce\",\n            \"description\": \"xyz\",\n            \"userId\": null,\n            \"createdAt\": \"2025-07-08T15:41:33.000Z\",\n            \"updatedAt\": \"2025-07-08T15:41:33.000Z\",\n            \"user\": null,\n            \"Categories\": []\n        },\n        {\n            \"id\": 2,\n            \"title\": \"post name updated\",\n            \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n            \"userId\": null,\n            \"createdAt\": \"2025-07-08T15:47:57.000Z\",\n            \"updatedAt\": \"2025-07-08T15:58:39.000Z\",\n            \"user\": null,\n            \"Categories\": []\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Learn Sequelize Associations\",\n            \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n            \"userId\": null,\n            \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n            \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n            \"user\": null,\n            \"Categories\": [\n                {\n                    \"id\": 2,\n                    \"title\": \"first category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                        \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 4\n                    }\n                },\n                {\n                    \"id\": 4,\n                    \"title\": \"abc category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                        \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 4\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Post with service\",\n            \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n            \"userId\": null,\n            \"createdAt\": \"2025-07-10T11:23:15.000Z\",\n            \"updatedAt\": \"2025-07-10T11:23:15.000Z\",\n            \"user\": null,\n            \"Categories\": [\n                {\n                    \"id\": 2,\n                    \"title\": \"first category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:23:15.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:23:15.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 5\n                    }\n                },\n                {\n                    \"id\": 4,\n                    \"title\": \"abc category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:23:15.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:23:15.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 5\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 6,\n            \"title\": \"Post with service\",\n            \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n            \"userId\": null,\n            \"createdAt\": \"2025-07-10T11:38:55.000Z\",\n            \"updatedAt\": \"2025-07-10T11:38:55.000Z\",\n            \"user\": null,\n            \"Categories\": [\n                {\n                    \"id\": 2,\n                    \"title\": \"first category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:38:55.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:38:55.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 6\n                    }\n                },\n                {\n                    \"id\": 4,\n                    \"title\": \"abc category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:38:55.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:38:55.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 6\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 7,\n            \"title\": \"Post with service\",\n            \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n            \"userId\": null,\n            \"createdAt\": \"2025-07-10T11:45:53.000Z\",\n            \"updatedAt\": \"2025-07-10T11:45:53.000Z\",\n            \"user\": null,\n            \"Categories\": [\n                {\n                    \"id\": 2,\n                    \"title\": \"first category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:45:53.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:45:53.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 7\n                    }\n                },\n                {\n                    \"id\": 4,\n                    \"title\": \"abc category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:45:53.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:45:53.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 7\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 8,\n            \"title\": \"Post with service\",\n            \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n            \"userId\": null,\n            \"createdAt\": \"2025-07-10T11:56:26.000Z\",\n            \"updatedAt\": \"2025-07-10T11:56:26.000Z\",\n            \"user\": null,\n            \"Categories\": [\n                {\n                    \"id\": 2,\n                    \"title\": \"first category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:56:26.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:56:26.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 8\n                    }\n                },\n                {\n                    \"id\": 4,\n                    \"title\": \"abc category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:56:26.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:56:26.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 8\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 9,\n            \"title\": \"Post with service\",\n            \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n            \"userId\": 3,\n            \"createdAt\": \"2025-07-10T12:02:38.000Z\",\n            \"updatedAt\": \"2025-07-10T12:02:38.000Z\",\n            \"user\": {\n                \"id\": 3,\n                \"name\": \"xyz\",\n                \"email\": \"xyz@gmail.com\",\n                \"createdAt\": \"2025-07-08T14:57:05.000Z\",\n                \"updatedAt\": \"2025-07-08T14:57:05.000Z\"\n            },\n            \"Categories\": [\n                {\n                    \"id\": 2,\n                    \"title\": \"first category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:19:48.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T12:02:38.000Z\",\n                        \"updatedAt\": \"2025-07-10T12:02:38.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 9\n                    }\n                },\n                {\n                    \"id\": 4,\n                    \"title\": \"abc category\",\n                    \"description\": \"abc\",\n                    \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:47.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T12:02:38.000Z\",\n                        \"updatedAt\": \"2025-07-10T12:02:38.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 9\n                    }\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Single Post",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/posts/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"posts",
+								"4"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getonepost",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/posts/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"posts",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "823"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"337-Nv3o5rO/P3qAfkUNAF8teQOJz2g\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:29:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Post fetched successfully\",\n    \"data\": {\n        \"id\": 4,\n        \"title\": \"Learn Sequelize Associations\",\n        \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n        \"userId\": null,\n        \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n        \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n        \"user\": null,\n        \"Categories\": [\n            {\n                \"id\": 2,\n                \"title\": \"first category\",\n                \"description\": \"abc\",\n                \"createdAt\": \"2025-07-09T09:19:48.000Z\",\n                \"updatedAt\": \"2025-07-09T09:19:48.000Z\",\n                \"PostCategories\": {\n                    \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"categoryId\": 2,\n                    \"postId\": 4\n                }\n            },\n            {\n                \"id\": 4,\n                \"title\": \"abc category\",\n                \"description\": \"abc\",\n                \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n                \"updatedAt\": \"2025-07-09T09:42:47.000Z\",\n                \"PostCategories\": {\n                    \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"categoryId\": 4,\n                    \"postId\": 4\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Update Post",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"title\" : \"post name updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/posts/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"posts",
+								"2"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "updatepost",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"title\" : \"post name updated\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/posts/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"posts",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "277"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"115-yv7z9d35tIQQJWyymsv4IQGzPig\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:29:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Post updated successfully\",\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"post name updated\",\n        \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n        \"userId\": null,\n        \"createdAt\": \"2025-07-08T15:47:57.000Z\",\n        \"updatedAt\": \"2025-07-08T15:58:39.000Z\"\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete Post",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/posts/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"posts",
+								"3"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "deletepost",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/posts/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"posts",
+										"3"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-w/54K4r+lj6CAYUARfrjymVNRhY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:29:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Post not found\",\n    \"error\": {}\n}"
+						}
+					]
 				}
 			]
 		},
@@ -102,42 +560,419 @@
 				{
 					"name": "Create Category",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"title\": \" category with service\",\r\n    \"description\" : \"abc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "createcategory",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"title\": \" category with service\",\r\n    \"description\" : \"abc\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/categories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "204"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cc-e3QZFlbjXmRFxmoqR29XeNN+vSE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:29:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Category created successfully\",\n    \"data\": {\n        \"id\": 6,\n        \"title\": \" category with service\",\n        \"description\": \"abc\",\n        \"updatedAt\": \"2025-07-10T15:29:44.438Z\",\n        \"createdAt\": \"2025-07-10T15:29:44.438Z\"\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Get All Catgory",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getall",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/categories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4748"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"128c-wY/wLSJUJUJpLUGroqRnzGv8a20\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:29:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Categories fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"title\": \"first category\",\n            \"description\": \"abc\",\n            \"createdAt\": \"2025-07-09T09:19:48.000Z\",\n            \"updatedAt\": \"2025-07-09T09:19:48.000Z\",\n            \"Posts\": [\n                {\n                    \"id\": 4,\n                    \"title\": \"Learn Sequelize Associations\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                        \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 4\n                    }\n                },\n                {\n                    \"id\": 5,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-10T11:23:15.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:23:15.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:23:15.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:23:15.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 5\n                    }\n                },\n                {\n                    \"id\": 6,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-10T11:38:55.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:38:55.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:38:55.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:38:55.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 6\n                    }\n                },\n                {\n                    \"id\": 7,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-10T11:45:53.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:45:53.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:45:53.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:45:53.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 7\n                    }\n                },\n                {\n                    \"id\": 8,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-10T11:56:26.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:56:26.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:56:26.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:56:26.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 8\n                    }\n                },\n                {\n                    \"id\": 9,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": 3,\n                    \"createdAt\": \"2025-07-10T12:02:38.000Z\",\n                    \"updatedAt\": \"2025-07-10T12:02:38.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T12:02:38.000Z\",\n                        \"updatedAt\": \"2025-07-10T12:02:38.000Z\",\n                        \"categoryId\": 2,\n                        \"postId\": 9\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 4,\n            \"title\": \"abc category\",\n            \"description\": \"abc\",\n            \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n            \"updatedAt\": \"2025-07-09T09:42:47.000Z\",\n            \"Posts\": [\n                {\n                    \"id\": 4,\n                    \"title\": \"Learn Sequelize Associations\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                        \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 4\n                    }\n                },\n                {\n                    \"id\": 5,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-10T11:23:15.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:23:15.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:23:15.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:23:15.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 5\n                    }\n                },\n                {\n                    \"id\": 6,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-10T11:38:55.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:38:55.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:38:55.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:38:55.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 6\n                    }\n                },\n                {\n                    \"id\": 7,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-10T11:45:53.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:45:53.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:45:53.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:45:53.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 7\n                    }\n                },\n                {\n                    \"id\": 8,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": null,\n                    \"createdAt\": \"2025-07-10T11:56:26.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:56:26.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T11:56:26.000Z\",\n                        \"updatedAt\": \"2025-07-10T11:56:26.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 8\n                    }\n                },\n                {\n                    \"id\": 9,\n                    \"title\": \"Post with service\",\n                    \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                    \"userId\": 3,\n                    \"createdAt\": \"2025-07-10T12:02:38.000Z\",\n                    \"updatedAt\": \"2025-07-10T12:02:38.000Z\",\n                    \"PostCategories\": {\n                        \"createdAt\": \"2025-07-10T12:02:38.000Z\",\n                        \"updatedAt\": \"2025-07-10T12:02:38.000Z\",\n                        \"categoryId\": 4,\n                        \"postId\": 9\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 5,\n            \"title\": \" category with service\",\n            \"description\": \"abc\",\n            \"createdAt\": \"2025-07-10T10:59:14.000Z\",\n            \"updatedAt\": \"2025-07-10T10:59:14.000Z\",\n            \"Posts\": []\n        },\n        {\n            \"id\": 6,\n            \"title\": \" category with service\",\n            \"description\": \"abc\",\n            \"createdAt\": \"2025-07-10T15:29:44.000Z\",\n            \"updatedAt\": \"2025-07-10T15:29:44.000Z\",\n            \"Posts\": []\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Update Category",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"title\":\"third\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/categories/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories",
+								"3"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"title\":\"third\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/categories/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"categories",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "187"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bb-WqMohtem2n0ybOM6lQInTWJfvDM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:30:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Category updated successfully\",\n    \"data\": {\n        \"id\": 4,\n        \"title\": \"third\",\n        \"description\": \"abc\",\n        \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n        \"updatedAt\": \"2025-07-10T15:30:16.595Z\"\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Single Category",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/categories/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories",
+								"4"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "showone",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/categories/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"categories",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2245"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8c5-u1acc/+jg0OhT80oMMIX5j7BxmU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:30:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Category fetched successfully\",\n    \"data\": {\n        \"id\": 4,\n        \"title\": \"third\",\n        \"description\": \"abc\",\n        \"createdAt\": \"2025-07-09T09:42:47.000Z\",\n        \"updatedAt\": \"2025-07-10T15:30:16.000Z\",\n        \"Posts\": [\n            {\n                \"id\": 4,\n                \"title\": \"Learn Sequelize Associations\",\n                \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                \"userId\": null,\n                \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                \"PostCategories\": {\n                    \"createdAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"updatedAt\": \"2025-07-09T09:42:58.000Z\",\n                    \"categoryId\": 4,\n                    \"postId\": 4\n                }\n            },\n            {\n                \"id\": 5,\n                \"title\": \"Post with service\",\n                \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                \"userId\": null,\n                \"createdAt\": \"2025-07-10T11:23:15.000Z\",\n                \"updatedAt\": \"2025-07-10T11:23:15.000Z\",\n                \"PostCategories\": {\n                    \"createdAt\": \"2025-07-10T11:23:15.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:23:15.000Z\",\n                    \"categoryId\": 4,\n                    \"postId\": 5\n                }\n            },\n            {\n                \"id\": 6,\n                \"title\": \"Post with service\",\n                \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                \"userId\": null,\n                \"createdAt\": \"2025-07-10T11:38:55.000Z\",\n                \"updatedAt\": \"2025-07-10T11:38:55.000Z\",\n                \"PostCategories\": {\n                    \"createdAt\": \"2025-07-10T11:38:55.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:38:55.000Z\",\n                    \"categoryId\": 4,\n                    \"postId\": 6\n                }\n            },\n            {\n                \"id\": 7,\n                \"title\": \"Post with service\",\n                \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                \"userId\": null,\n                \"createdAt\": \"2025-07-10T11:45:53.000Z\",\n                \"updatedAt\": \"2025-07-10T11:45:53.000Z\",\n                \"PostCategories\": {\n                    \"createdAt\": \"2025-07-10T11:45:53.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:45:53.000Z\",\n                    \"categoryId\": 4,\n                    \"postId\": 7\n                }\n            },\n            {\n                \"id\": 8,\n                \"title\": \"Post with service\",\n                \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                \"userId\": null,\n                \"createdAt\": \"2025-07-10T11:56:26.000Z\",\n                \"updatedAt\": \"2025-07-10T11:56:26.000Z\",\n                \"PostCategories\": {\n                    \"createdAt\": \"2025-07-10T11:56:26.000Z\",\n                    \"updatedAt\": \"2025-07-10T11:56:26.000Z\",\n                    \"categoryId\": 4,\n                    \"postId\": 8\n                }\n            },\n            {\n                \"id\": 9,\n                \"title\": \"Post with service\",\n                \"description\": \"This post explains many-to-many and one-to-one Sequelize relationships.\",\n                \"userId\": 3,\n                \"createdAt\": \"2025-07-10T12:02:38.000Z\",\n                \"updatedAt\": \"2025-07-10T12:02:38.000Z\",\n                \"PostCategories\": {\n                    \"createdAt\": \"2025-07-10T12:02:38.000Z\",\n                    \"updatedAt\": \"2025-07-10T12:02:38.000Z\",\n                    \"categoryId\": 4,\n                    \"postId\": 9\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete Category",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/categories/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories",
+								"3"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/categories/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"categories",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-lv6Kn2f2jC4FQrrIIf8eC4Y+e8M\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:30:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Category deleted successfully\",\n    \"data\": {}\n}"
+						}
+					]
 				}
 			]
 		},
@@ -148,25 +983,248 @@
 					"name": "Get All Settings",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/settings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"settings"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/settings",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"settings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1425"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"591-0PMxOZwIgJWk7EO+HdW0JSpVq7s\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 15:30:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Settings fetched successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"phoneNo\": \"0000\",\n            \"city\": \"lahore\",\n            \"userId\": 2,\n            \"createdAt\": \"2025-07-08T14:56:33.000Z\",\n            \"updatedAt\": \"2025-07-08T14:56:33.000Z\",\n            \"user\": {\n                \"id\": 2,\n                \"name\": \"abc\",\n                \"email\": \"abc@gmail.com\",\n                \"createdAt\": \"2025-07-08T14:56:33.000Z\",\n                \"updatedAt\": \"2025-07-08T14:56:33.000Z\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"phoneNo\": \"12345\",\n            \"city\": \"isb\",\n            \"userId\": 3,\n            \"createdAt\": \"2025-07-08T14:57:05.000Z\",\n            \"updatedAt\": \"2025-07-08T14:57:05.000Z\",\n            \"user\": {\n                \"id\": 3,\n                \"name\": \"xyz\",\n                \"email\": \"xyz@gmail.com\",\n                \"createdAt\": \"2025-07-08T14:57:05.000Z\",\n                \"updatedAt\": \"2025-07-08T14:57:05.000Z\"\n            }\n        },\n        {\n            \"id\": 6,\n            \"phoneNo\": \"123456789\",\n            \"city\": \"london\",\n            \"userId\": 7,\n            \"createdAt\": \"2025-07-10T08:58:38.000Z\",\n            \"updatedAt\": \"2025-07-10T08:58:38.000Z\",\n            \"user\": {\n                \"id\": 7,\n                \"name\": \"Ali\",\n                \"email\": \"ali@example.com\",\n                \"createdAt\": \"2025-07-10T08:58:38.000Z\",\n                \"updatedAt\": \"2025-07-10T08:58:38.000Z\"\n            }\n        },\n        {\n            \"id\": 7,\n            \"phoneNo\": \"03001234567\",\n            \"city\": \"Lahore  Pakistan\",\n            \"userId\": 8,\n            \"createdAt\": \"2025-07-10T09:01:25.000Z\",\n            \"updatedAt\": \"2025-07-10T12:08:22.000Z\",\n            \"user\": {\n                \"id\": 8,\n                \"name\": \"Ali2\",\n                \"email\": \"a3li@example.com\",\n                \"createdAt\": \"2025-07-10T09:01:25.000Z\",\n                \"updatedAt\": \"2025-07-10T09:01:25.000Z\"\n            }\n        },\n        {\n            \"id\": 8,\n            \"phoneNo\": \"03001234567\",\n            \"city\": \"Lahore\",\n            \"userId\": 9,\n            \"createdAt\": \"2025-07-10T12:15:17.000Z\",\n            \"updatedAt\": \"2025-07-10T12:15:17.000Z\",\n            \"user\": {\n                \"id\": 9,\n                \"name\": \"user test 2\",\n                \"email\": \"usertest2@example.com\",\n                \"createdAt\": \"2025-07-10T12:15:17.000Z\",\n                \"updatedAt\": \"2025-07-10T12:15:17.000Z\"\n            }\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Update Setting",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\" : \"Lahore  Pakistan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/settings/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"settings",
+								"7"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"city\" : \"Lahore  Pakistan\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/settings/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"settings",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "211"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d3-Caomox0SGKd/JG7JeBTpRytOPjM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 12:08:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Setting updated successfully\",\n    \"data\": {\n        \"id\": 7,\n        \"phoneNo\": \"03001234567\",\n        \"city\": \"Lahore  Pakistan\",\n        \"userId\": 8,\n        \"createdAt\": \"2025-07-10T09:01:25.000Z\",\n        \"updatedAt\": \"2025-07-10T12:08:22.600Z\"\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete Setting",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/settings/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"settings",
+								"5"
+							]
+						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/settings/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"settings",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-hUwGu3E3WGhg+J9yfloNiBRRomg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Jul 2025 14:35:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Setting deleted successfully\",\n    \"data\": {}\n}"
+						}
+					]
 				}
 			]
 		}
