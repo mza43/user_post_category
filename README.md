@@ -15,8 +15,13 @@ Technologies Used
 Clone the Repository
 git clone https://github.com/mza43/user_post_category.git
 
-.env.example
+Run migrations:
+npx sequelize-cli db:migrate
 
+Start Production
+npm start
+
+.env.example
 DB_NAME=userpc
 DB_USER=root
 DB_PASS=
