@@ -1,64 +1,53 @@
-const { Category, Post } = require('../models');
+const categoryService = require('../services/categoryService');
+const { successResponse, errorResponse } = require('../utils/response');
 
-// Create new category
 exports.createCategory = async (req, res) => {
   try {
-    const { title, description } = req.body;
-    const category = await Category.create({ title, description });
-    res.status(201).json(category);
+    const category = await categoryService.createCategory(req.body);
+    successResponse(res, 'Category created successfully', category);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Category creation failed', err);
   }
 };
 
-// Get all categories
 exports.getAllCategories = async (req, res) => {
   try {
-    const categories = await Category.findAll({
-      include: [{ model: Post }]
-    });
-    res.json(categories);
+    const categories = await categoryService.getAllCategories();
+    successResponse(res, 'Categories fetched successfully', categories);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to fetch categories', err);
   }
 };
 
-// Get category by ID
 exports.getCategoryById = async (req, res) => {
   try {
-    const category = await Category.findByPk(req.params.id, {
-      include: [{ model: Post }]
-    });
-    if (!category) return res.status(404).json({ error: 'Category not found' });
-    res.json(category);
+    const category = await categoryService.getCategoryById(req.params.id);
+    if (!category) return errorResponse(res, 'Category not found', {}, 404);
+
+    successResponse(res, 'Category fetched successfully', category);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to fetch category', err);
   }
 };
 
-// Update category
 exports.updateCategory = async (req, res) => {
   try {
-    const { title, description } = req.body;
-    const category = await Category.findByPk(req.params.id);
-    if (!category) return res.status(404).json({ error: 'Category not found' });
+    const category = await categoryService.updateCategory(req.params.id, req.body);
+    if (!category) return errorResponse(res, 'Category not found', {}, 404);
 
-    await category.update({ title, description });
-    res.json(category);
+    successResponse(res, 'Category updated successfully', category);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to update category', err);
   }
 };
 
-// Delete category
 exports.deleteCategory = async (req, res) => {
   try {
-    const category = await Category.findByPk(req.params.id);
-    if (!category) return res.status(404).json({ error: 'Category not found' });
+    const category = await categoryService.deleteCategory(req.params.id);
+    if (!category) return errorResponse(res, 'Category not found', {}, 404);
 
-    await category.destroy();
-    res.json({ message: 'Category deleted' });
+    successResponse(res, 'Category deleted successfully', {});
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to delete category', err);
   }
 };
