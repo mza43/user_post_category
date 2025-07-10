@@ -17,7 +17,6 @@ const categoryRoutes = require('./routes/categories');
 app.use('/api/categories', categoryRoutes);
 app.use('/api/settings', settingRoutes);
 
-
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });

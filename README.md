@@ -1,4 +1,5 @@
 Features
+
 - Users (with one-to-one settings)
 - Posts (each post belongs to a user, can belong to many categories)
 - Categories (each can belong to many posts)

@@ -6,13 +6,13 @@ exports.createCategory = async ({ title, description }) => {
 
 exports.getAllCategories = async () => {
   return await Category.findAll({
-    include: [{ model: Post }]
+    include: [{ model: Post }],
   });
 };
 
 exports.getCategoryById = async (id) => {
   return await Category.findByPk(id, {
-    include: [{ model: Post }]
+    include: [{ model: Post }],
   });
 };
 

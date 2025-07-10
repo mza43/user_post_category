@@ -1,11 +1,10 @@
 const { Post, User, Category } = require('../models');
 
 exports.createPost = async ({ title, description, userId, categoryIds }) => {
-
   const post = await Post.create({
     title,
     description,
-    userId
+    userId,
   });
 
   console.log();
@@ -19,19 +18,13 @@ exports.createPost = async ({ title, description, userId, categoryIds }) => {
 
 exports.getAllPosts = async () => {
   return await Post.findAll({
-    include: [
-      { model: User, as: 'user' },
-      { model: Category }
-    ]
+    include: [{ model: User, as: 'user' }, { model: Category }],
   });
 };
 
 exports.getPostById = async (id) => {
   return await Post.findByPk(id, {
-    include: [
-      { model: User, as: 'user' },
-      { model: Category }
-    ]
+    include: [{ model: User, as: 'user' }, { model: Category }],
   });
 };
 

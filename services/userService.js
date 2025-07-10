@@ -10,19 +10,19 @@ exports.createUser = async ({ name, email, setting }) => {
     }
 
     const fullUser = await User.findByPk(user.id, {
-      include: [{ model: Setting, as: 'setting' }]
+      include: [{ model: Setting, as: 'setting' }],
     });
 
     return {
       status: true,
       message: 'User created successfully',
-      data: fullUser
+      data: fullUser,
     };
   } catch (err) {
     return {
       status: false,
       message: 'User not created successfully',
-      error: err
+      error: err,
     };
   }
 };
@@ -30,18 +30,18 @@ exports.createUser = async ({ name, email, setting }) => {
 exports.getAllUsers = async () => {
   try {
     const users = await User.findAll({
-      include: [{ model: Setting, as: 'setting' }]
+      include: [{ model: Setting, as: 'setting' }],
     });
     return {
       status: true,
       message: 'Users fetched successfully',
-      data: users
+      data: users,
     };
   } catch (err) {
     return {
       status: false,
       message: 'Failed to fetch users',
-      error: err
+      error: err,
     };
   }
 };
@@ -49,7 +49,7 @@ exports.getAllUsers = async () => {
 exports.getUserById = async (id) => {
   try {
     const user = await User.findByPk(id, {
-      include: [{ model: Setting, as: 'setting' }]
+      include: [{ model: Setting, as: 'setting' }],
     });
 
     if (!user) {
@@ -57,20 +57,20 @@ exports.getUserById = async (id) => {
         status: false,
         message: 'User not found',
         error: {},
-        code: 404
+        code: 404,
       };
     }
 
     return {
       status: true,
       message: 'User fetched successfully',
-      data: user
+      data: user,
     };
   } catch (err) {
     return {
       status: false,
       message: 'Failed to fetch user',
-      error: err
+      error: err,
     };
   }
 };
@@ -78,7 +78,7 @@ exports.getUserById = async (id) => {
 exports.updateUser = async (id, { name, email, phone, timezone }) => {
   try {
     const user = await User.findByPk(id, {
-      include: [{ model: Setting, as: 'setting' }]
+      include: [{ model: Setting, as: 'setting' }],
     });
 
     if (!user) {
@@ -86,7 +86,7 @@ exports.updateUser = async (id, { name, email, phone, timezone }) => {
         status: false,
         message: 'User not found',
         error: {},
-        code: 404
+        code: 404,
       };
     }
 
@@ -100,13 +100,13 @@ exports.updateUser = async (id, { name, email, phone, timezone }) => {
     return {
       status: true,
       message: 'User updated successfully',
-      data: { user, setting }
+      data: { user, setting },
     };
   } catch (err) {
     return {
       status: false,
       message: 'Failed to update user',
-      error: err
+      error: err,
     };
   }
 };
@@ -120,7 +120,7 @@ exports.deleteUser = async (id) => {
         status: false,
         message: 'User not found',
         error: {},
-        code: 404
+        code: 404,
       };
     }
 
@@ -129,13 +129,13 @@ exports.deleteUser = async (id) => {
     return {
       status: true,
       message: 'User deleted successfully',
-      data: {}
+      data: {},
     };
   } catch (err) {
     return {
       status: false,
       message: 'Failed to delete user',
-      error: err
+      error: err,
     };
   }
 };

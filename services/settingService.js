@@ -11,13 +11,13 @@ exports.createSetting = async ({ phoneNo, city, userId }) => {
 
 exports.getAllSettings = async () => {
   return await Setting.findAll({
-    include: [{ model: User, as: 'user' }]
+    include: [{ model: User, as: 'user' }],
   });
 };
 
 exports.getSettingById = async (id) => {
   return await Setting.findByPk(id, {
-    include: [{ model: User, as: 'user' }]
+    include: [{ model: User, as: 'user' }],
   });
 };
 
