@@ -1,72 +1,53 @@
-const { Setting, User } = require('../models');
+const settingService = require('../services/settingService');
+const { successResponse, errorResponse } = require('../utils/response');
 
-// Create setting
 exports.createSetting = async (req, res) => {
   try {
-    const { phoneNo, city, userId } = req.body;
-
-    //  Check if setting already exists 
-    const exists = await Setting.findOne({ where: { userId } });
-    if (exists) return res.status(400).json({ error: 'Setting already exists for this user.' });
-
-    const setting = await Setting.create({ phoneNo, city, userId });
-    res.status(201).json(setting);
+    const setting = await settingService.createSetting(req.body);
+    successResponse(res, 'Setting created successfully', setting);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Setting not created successfully', err.message);
   }
 };
 
-// Get all settings
 exports.getAllSettings = async (req, res) => {
   try {
-    const settings = await Setting.findAll({
-      include: [{ model: User, as: 'user' }]
-    });
-    res.json(settings);
+    const settings = await settingService.getAllSettings();
+    successResponse(res, 'Settings fetched successfully', settings);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to fetch settings', err.message);
   }
 };
 
-// Get single setting by ID
 exports.getSettingById = async (req, res) => {
   try {
-    const setting = await Setting.findByPk(req.params.id, {
-      include: [{ model: User, as: 'user' }]
-    });
+    const setting = await settingService.getSettingById(req.params.id);
+    if (!setting) return errorResponse(res, 'Setting not found', {}, 404);
 
-    if (!setting) return res.status(404).json({ error: 'Setting not found' });
-
-    res.json(setting);
+    successResponse(res, 'Setting fetched successfully', setting);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to fetch setting', err.message);
   }
 };
 
-// Update setting
 exports.updateSetting = async (req, res) => {
   try {
-    const { phoneNo, city } = req.body;
+    const setting = await settingService.updateSetting(req.params.id, req.body);
+    if (!setting) return errorResponse(res, 'Setting not found', {}, 404);
 
-    const setting = await Setting.findByPk(req.params.id);
-    if (!setting) return res.status(404).json({ error: 'Setting not found' });
-
-    await setting.update({ phoneNo, city });
-    res.json(setting);
+    successResponse(res, 'Setting updated successfully', setting);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to update setting', err.message);
   }
 };
 
-// Delete setting
 exports.deleteSetting = async (req, res) => {
   try {
-    const setting = await Setting.findByPk(req.params.id);
-    if (!setting) return res.status(404).json({ error: 'Setting not found' });
+    const deleted = await settingService.deleteSetting(req.params.id);
+    if (!deleted) return errorResponse(res, 'Setting not found', {}, 404);
 
-    await setting.destroy();
-    res.json({ message: 'Setting deleted' });
+    successResponse(res, 'Setting deleted successfully', {});
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to delete setting', err.message);
   }
 };

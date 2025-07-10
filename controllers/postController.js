@@ -1,94 +1,53 @@
-const { Post, User, Category } = require('../models');
+const postService = require('../services/postService');
+const { successResponse, errorResponse } = require('../utils/response');
 
-//  Create a new Post
 exports.createPost = async (req, res) => {
   try {
-    const { title, description, userId, categoryIds } = req.body;
-
-    // Create the post and associate it with the user
-    const post = await Post.create({
-      title,
-      description,
-      UserId: userId
-    });
-
-    // Associate categories if any
-    if (categoryIds && categoryIds.length > 0) {
-      await post.setCategories(categoryIds);
-    }
-
-    res.status(201).json(post);
+    const post = await postService.createPost(req.body);
+    successResponse(res, 'Post created successfully', post);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Post not created successfully', err);
   }
 };
 
-//  Get all posts with user and categories
 exports.getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.findAll({
-      include: [
-        { model: User, as: 'user' },         
-        { model: Category }                    
-      ]
-    });
-
-    res.json(posts);
+    const posts = await postService.getAllPosts();
+    successResponse(res, 'Posts fetched successfully', posts);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to fetch posts', err);
   }
 };
 
-//  Get a single post by ID
 exports.getPostById = async (req, res) => {
   try {
-    const post = await Post.findByPk(req.params.id, {
-      include: [
-        { model: User, as: 'user' },
-        { model: Category }
-      ]
-    });
+    const post = await postService.getPostById(req.params.id);
+    if (!post) return errorResponse(res, 'Post not found', {}, 404);
 
-    if (!post) return res.status(404).json({ error: 'Post not found' });
-
-    res.json(post);
+    successResponse(res, 'Post fetched successfully', post);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to fetch post', err);
   }
 };
 
-// Update a post
 exports.updatePost = async (req, res) => {
   try {
-    const { title, description, categoryIds } = req.body;
+    const post = await postService.updatePost(req.params.id, req.body);
+    if (!post) return errorResponse(res, 'Post not found', {}, 404);
 
-    const post = await Post.findByPk(req.params.id);
-
-    if (!post) return res.status(404).json({ error: 'Post not found' });
-
-    await post.update({ title, description });
-
-    if (categoryIds) {
-      await post.setCategories(categoryIds);
-    }
-
-    res.json(post);
+    successResponse(res, 'Post updated successfully', post);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to update post', err);
   }
 };
 
-// Delete a post
 exports.deletePost = async (req, res) => {
   try {
-    const post = await Post.findByPk(req.params.id);
+    const deleted = await postService.deletePost(req.params.id);
+    if (!deleted) return errorResponse(res, 'Post not found', {}, 404);
 
-    if (!post) return res.status(404).json({ error: 'Post not found' });
-
-    await post.destroy();
-
-    res.json({ message: 'Post deleted successfully' });
+    successResponse(res, 'Post deleted successfully', {});
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorResponse(res, 'Failed to delete post', err);
   }
 };
