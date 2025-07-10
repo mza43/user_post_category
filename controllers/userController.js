@@ -16,7 +16,6 @@ exports.createUser = async (req, res) => {
       });
     }
 
-    // Optional: return user with setting
     const fullUser = await User.findByPk(user.id, {
       include: [{ model: Setting, as: 'setting' }]
     });
