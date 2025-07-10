@@ -9,15 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+
+         //many to many relation post and category
     static associate(models) {
-      // Many-to-Many: Post <--> Category
       Post.belongsToMany(models.Category, {
         through: 'PostCategories',
         foreignKey: 'postId',
         otherKey: 'categoryId'
       });
-
-      // Many-to-One: Post --> User
+        // relation with user
       Post.belongsTo(models.User, {
         foreignKey: 'userId',
         as: 'user'
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   Post.init({
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    userId: DataTypes.INTEGER // include foreign key for User
+    userId: DataTypes.INTEGER 
   }, {
     sequelize,
     modelName: 'Post',

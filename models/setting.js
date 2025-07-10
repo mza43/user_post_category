@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * Define associations.
      */
     static associate(models) {
-      // One-to-One: Setting --> User
+
       Setting.belongsTo(models.User, {
         foreignKey: 'userId',
         as: 'user'
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   Setting.init({
     phoneNo: DataTypes.STRING,
     city: DataTypes.STRING,
-    userId: DataTypes.INTEGER // Add the foreign key to the model
+    userId: DataTypes.INTEGER 
   }, {
     sequelize,
     modelName: 'Setting',

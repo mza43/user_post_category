@@ -2,16 +2,31 @@ const { User, Setting } = require('../models');
 
 exports.createUser = async (req, res) => {
   try {
-    const { name, email, phone, timezone } = req.body;
+    const { name, email, setting } = req.body;
 
     const user = await User.create({ name, email });
-    await Setting.create({ phone, timezone, userId: user.id });
 
-    res.status(201).json(user);
+    if (setting) {
+      const { phoneNo, city, timezone } = setting;
+      await Setting.create({
+        phoneNo,
+        city,
+        timezone,
+        userId: user.id
+      });
+    }
+
+    // Optional: return user with setting
+    const fullUser = await User.findByPk(user.id, {
+      include: [{ model: Setting, as: 'setting' }]
+    });
+
+    res.status(201).json(fullUser);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 exports.getAllUsers = async (req, res) => {
   try {
