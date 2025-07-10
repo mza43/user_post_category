@@ -15,6 +15,7 @@ Clone the Repository
 git clone https://github.com/mza43/user_post_category.git
 
 .env.example
+
 DB_NAME=userpc
 DB_USER=root
 DB_PASS=
