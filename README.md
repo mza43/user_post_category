@@ -21,6 +21,17 @@ npx sequelize-cli db:migrate
 Start Production
 npm start
 
+For Database
+npm run install:sequelize
+npm run sequelize:init   
+Ignore
+ERROR: The file already exists. Run command with --force to overwrite it.
+Do not use the --force command — it will delete the migrations folder.
+Add DB credentials in config/config.json
+
+npm run migrate
+
+
 .env.example
 DB_NAME=userpc
 DB_USER=root

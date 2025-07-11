@@ -5,6 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "install:sequelize": "npm install sequelize mysql2",
+    "migrate": "npx sequelize-cli db:migrate",
+    "sequelize:init": "npx sequelize-cli init",
+    
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
