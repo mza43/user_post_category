@@ -1,4 +1,4 @@
-import eslintPluginPrettier from 'eslint-plugin-prettier';
+import eslintPluginPrettier from 'eslint-plugin-prettier'
 
 export default [
   {
@@ -14,4 +14,4 @@ export default [
       'prettier/prettier': 'error',
     },
   },
-];
+]

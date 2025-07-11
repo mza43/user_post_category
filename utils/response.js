@@ -3,13 +3,13 @@ exports.successResponse = (res, message, data = {}) => {
     status: true,
     message,
     data,
-  });
-};
+  })
+}
 
 exports.errorResponse = (res, message, error = {}, statusCode = 500) => {
   return res.status(statusCode).json({
     status: false,
     message,
     error,
-  });
-};
+  })
+}
