@@ -7,7 +7,6 @@
     "start": "nodemon index.js",
     "install:sequelize": "npm install sequelize mysql2 --no-save",
     "migrate": "npx sequelize-cli db:migrate",
-    
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",

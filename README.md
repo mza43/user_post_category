@@ -12,18 +12,22 @@
 - MySQL
 - Dotenv for environment config
 - node v24.2.0
+
 # Clone the Repository
+
 - git clone https://github.com/mza43/user_post_category.git
 
 # Start Production
+
 - npm start
 
 ## For Database
+
 - npm run install:sequelize
 - npm run migrate
 
-
 # .env.example
+
 DB_NAME=userpc
 DB_USER=root
 DB_PASS=
