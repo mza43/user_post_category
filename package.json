@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "install:sequelize": "npm install sequelize mysql2",
+    "install:sequelize": "npm install sequelize mysql2 --no-save",
     "migrate": "npx sequelize-cli db:migrate",
     
     "lint": "eslint .",
