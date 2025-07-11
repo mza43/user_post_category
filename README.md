@@ -13,18 +13,17 @@
 - Dotenv for environment config
 
 # Clone the Repository
-git clone https://github.com/mza43/user_post_category.git
+- git clone https://github.com/mza43/user_post_category.git
 
 # Start Production
-npm start
+- npm start
 
 ## For Database
-npm run sequelize:init   
+- npm run install:sequelize
+- npm run migrate
 
-npm run migrate
 
-
-.env.example
+# .env.example
 DB_NAME=userpc
 DB_USER=root
 DB_PASS=
